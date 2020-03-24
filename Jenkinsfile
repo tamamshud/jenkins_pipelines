@@ -7,7 +7,7 @@ pipeline {
             steps {
             gitCheckout(
                 branch: "master",
-                url: "https://github.com/Sanwel/JavaApp"
+                url: "https://github.com/tamamshud/jenkins_pipelines"
             )
             }
     }
