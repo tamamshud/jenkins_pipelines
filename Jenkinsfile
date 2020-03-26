@@ -10,6 +10,16 @@ pipeline {
                 url: "https://github.com/tamamshud/jenkins_pipelines"
             )
             }
-    }
+        }
+         stage ('Execute Maven') {
+            withMaven(
+                jdk: "${jdkVersion}",
+                maven: "${mavenVersion}",
+                mavenOpts: "${jvmOptions}"
+            )
+            {
+                sh "mvn clean install"
+            }
+        }
     }
 }
