@@ -5,9 +5,9 @@ def call(Closure body) {
         body.delegate = config
         body()
            parallel 
-                performance test: { sh "${config.performanceCommand}" }
-                regression test: { sh "${config.regressionCommand}" }
-                integration test: { sh "${config.integrationCommand}" }
+                "performance test": { sh "${config.performanceCommand}" }
+                "regression test": { sh "${config.regressionCommand}" }
+                "integration test": { sh "${config.integrationCommand}" }
           
        
    }
