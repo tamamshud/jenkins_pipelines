@@ -1,8 +1,11 @@
 def call() {
-pipeline {
-  agent none
   stages {
     stage('Test') {
+        def config = [:]
+        body.resolveStrategy = Closure.DELEGATE_FIRST
+        body.delegate = config
+        body()
+
       parallel {
         
         stage('performance') {
@@ -26,4 +29,4 @@ pipeline {
     }
   }
 }
-}
+
