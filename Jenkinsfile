@@ -7,16 +7,11 @@ pipeline {
             steps {
             gitCheckout(
                 branch: "master",
-                url: "https://github.com/tamamshud/jenkins_pipelines"
+                url: "https://github.com/tamamshud/test-maven-project"
             )
             }
         }
          stage ('Execute Maven') {
-            withMaven(
-                jdk: "${jdkVersion}",
-                maven: "${mavenVersion}",
-                mavenOpts: "${jvmOptions}"
-            )
             {
                 sh "mvn clean install"
             }
