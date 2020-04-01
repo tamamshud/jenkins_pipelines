@@ -7,19 +7,19 @@ def call(Closure body) {
            parallel performance: { 
                stage("Performance"){
                    node("master"){
-                         sh "${config.performanceCommand}"
+                         sh "${config.testDirectory} && ${config.performanceCommand}"
                    }
                }
            }, regression: {
               stage("Regression"){
                    node("master"){
-                         sh "${config.regressionCommand}"
+                         sh "${config.testDirectory} && ${config.regressionCommand}"
                    }
                }
            }, integration: {
               stage("Integration"){
                    node("master"){
-                         sh "${config.integrationCommand}"
+                         sh "${config.testDirectory} && ${config.integrationCommand}"
                    }
               }
            }
