@@ -11,9 +11,7 @@ pipeline {
               label 'master'
             }
           }
-          steps {
-             sh "${config.performanceCommand}
-          }
+          steps { sh "${config.performanceCommand}"  }
         }
 
         stage('regression') {
@@ -22,9 +20,7 @@ pipeline {
               label 'master'
             }
           }
-          steps {
-             sh "${config.regressionCommand}"
-          }
+          steps { sh "${config.regressionCommand}" }
         }
       }
     }
