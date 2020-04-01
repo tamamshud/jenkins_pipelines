@@ -5,17 +5,23 @@ def call(Closure body) {
         body.delegate = config
         body()
            parallel performance: { 
-               stage("perf"){
+               stage("Performance"){
                    node("master"){
                          sh "${config.performanceCommand}"
                    }
                }
            }, regression: {
-              stage("perf"){
+              stage("Regression"){
                    node("master"){
-                         sh """ hostname """
+                         sh "${config.regressionCommand}"
                    }
                }
+           }, integration: {
+              stage("Integration"){
+                   node("master"){
+                         sh "${config.integrationCommand}"
+                   }
+              }
            }
      }
 }
