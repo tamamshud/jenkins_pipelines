@@ -1,4 +1,4 @@
-def call() {
+def call(Closure body) {
     stage('Test') {
         def config = [:]
         body.resolveStrategy = Closure.DELEGATE_FIRST
