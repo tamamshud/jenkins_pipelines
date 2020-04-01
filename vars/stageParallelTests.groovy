@@ -5,11 +5,11 @@ def call(Closure body) {
         body.delegate = config
         body()
 	steps {
-           parallel (
+           parallel 
                 "performance test": { sh "${config.performanceCommand}" }
                 "regression test": { sh "${config.regressionCommand}" }
                 "integration test": { sh "${config.integrationCommand}" }
-           )
+          
        }
    }
 }  
