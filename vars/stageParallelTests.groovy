@@ -4,11 +4,11 @@ def call(Closure body) {
         body.resolveStrategy = Closure.DELEGATE_FIRST
         body.delegate = config
         body()
-           parallel (
-                "performance test": { sh "${config.performanceCommand}" }
-                "regression test": { sh "${config.regressionCommand}" }
-                "integration test": { sh "${config.integrationCommand}" }
+           parallel 
+                performance: { sh "${config.performanceCommand}" }
+                regression: { sh "${config.regressionCommand}" }
+                integration: { sh "${config.integrationCommand}" }
           
-       )
+       
    }
 }  
