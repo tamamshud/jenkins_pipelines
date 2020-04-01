@@ -6,22 +6,10 @@ def call(Closure body) {
         body()
 	steps {
            parallel {
-                stage ('Performance test') {
-                    steps {
-                       sh 'config.performanceCommand'
-                    }
-                }
-                stage ('Regression test') {
-                    steps {
-                       sh 'config.regressionCommand'
-                    }
-                }
-                stage ('Integration test') {
-                    steps {
-                       sh 'config.integrationCommand'
-                    }
-                }   
-            }
+		"performance test": {sh "${config.performanceCommand}"}
+		"regression test": {sh "${config.regressionCommand}"}
+		"integration test": {sh "${config.integrationCommand}"}
+           }
        }
    }
 }  
