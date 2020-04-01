@@ -9,7 +9,6 @@ def call (Closure body) {
             branches: [[name: "${config.branchName}"]],
             doGenerateSubmoduleConfigurations: false,
             extensions: [[$class: 'RelativeTargetDirectory',
-                relativeTargetDir: "${config.remoteDir}"]],
             submoduleCfg: [],
             userRemoteConfigs: [[
                 credentialsId: "${config.credentialsID}" , 
