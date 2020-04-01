@@ -1,5 +1,4 @@
 def call(Closure body) {
-    stage ('Parallel Tests') {
         def config = [:]
         body.resolveStrategy = Closure.DELEGATE_FIRST
         body.delegate = config
@@ -23,5 +22,5 @@ def call(Closure body) {
              }
          }
     }
-}
+
 
