@@ -1,14 +1,33 @@
-def call(Closure body) {
-    stage ('Test') {
-        def config = [:]
-        body.resolveStrategy = Closure.DELEGATE_FIRST
-        body.delegate = config
-        body()
-           parallel 
-                performance: { sh "${config.performanceCommand}" }
-                regression: { sh "${config.regressionCommand}" }
-                integration: { sh "${config.integrationCommand}" }
-          
-       
-   }
-}  
+def call() {
+pipeline {
+  agent none
+  stages {
+    stage('Test') {
+      parallel {
+        
+        stage('performance') {
+          agent {
+            node {
+              label 'master'
+            }
+          }
+          steps {
+             sh "${config.performanceCommand}
+          }
+        }
+
+        stage('regression') {
+          agent {
+            node {
+              label 'master'
+            }
+          }
+          steps {
+             sh "${config.regressionCommand}"
+          }
+        }
+      }
+    }
+  }
+}
+}
