@@ -5,11 +5,7 @@ def call(Closure body) {
         body.delegate = config
         body()
 
-        withMaven(
-            maven: "${config.mavenVersion}",
-            mavenOpts: "${config.jvmOptions}"
-        ){
-            sh "${config.mavenCommand}"
-        }
+        sh "${config.mavenCommand}"
+        
     }
 }
