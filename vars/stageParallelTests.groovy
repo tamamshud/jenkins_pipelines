@@ -22,7 +22,7 @@ def call(Closure body) {
                          sh "${config.testDirectory} && ${config.integrationCommand}"
                    }
               }
-           }
+           }, failFast: true
      }
 }
 
